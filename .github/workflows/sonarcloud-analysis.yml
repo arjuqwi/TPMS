@@ -32,6 +32,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # GitHub token for PR info
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}      # SonarCloud token
         run: |
-          dotnet sonarscanner begin /k:"arjuqwi_TPMS" /o:"arjuqwi-1" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io"
+          dotnet sonarscanner begin /k:"arjuqwi_TPMS" /o:"arjuqwi-1" /d:sonar.token="${{ secrets.SONAR_TOKEN }}" /d:sonar.host.url="https://sonarcloud.io" /d:sonar.branch.name="${{ github.ref }}"
           dotnet build
           dotnet sonarscanner end /d:sonar.token="${{ secrets.SONAR_TOKEN }}"
